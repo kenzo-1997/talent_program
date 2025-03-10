@@ -708,13 +708,16 @@
             <h2>プログラムについて</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p style="margin-top: 0;">才能開花プログラムは、ストレングスファインダーなどの診断ツールで見つかった「強み」を、実際の生活や仕事で活かすためのサポートプログラムです。</p>
+                    <p>才能開花プログラムは、ストレングスファインダーなどの診断ツールで見つかった「強み」を、実際の生活や仕事で活かすためのサポートプログラムです。</p>
                     <p>特に日本では、褒められると「そんなことない」と否定・謙遜するのが美徳とされている文化があり、自分の強みを素直に受け入れることが難しい環境でもあります。</p>
                     <p>このプログラムでは、第三者の視点から、あなたの強みを客観的に観察し、言語化します。そして、その強みがどのように日常や仕事で活かせるかを一緒に考えていきます。</p>
                 </div>
                 <div class="about-image">
-                    <!-- SVGを直接埋め込み -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="auto" preserveAspectRatio="xMidYMid meet">
+                    <!-- SVGを直接埋め込み - アクセシビリティ属性を追加 -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" aria-labelledby="svgTitle" role="img">
+                        <!-- SVG説明用のタイトル -->
+                        <title id="svgTitle">才能開花プログラムの概念図：中心に「強み」、下部に「発見」「言語化」「活用」の3つの要素</title>
+                        
                         <!-- 背景 -->
                         <rect width="800" height="600" fill="#f5f7fa" />
                         
@@ -732,28 +735,28 @@
                         <polygon points="578,340 564,336 570,335" fill="#f9a826" transform="rotate(35 570 335)" />
                         
                         <!-- プログラム名 -->
-                        <text x="400" y="80" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="#4a6fa5" font-weight="bold">才能開花プログラム</text>
+                        <text x="400" y="80" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="#4a6fa5" font-weight="bold" aria-hidden="true">才能開花プログラム</text>
                         
                         <!-- 中心円 - 強み（上部に配置） -->
                         <circle cx="400" cy="200" r="90" fill="#4a6fa5" />
-                        <text x="400" y="210" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="#ffffff" font-weight="bold">強み</text>
+                        <text x="400" y="210" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="#ffffff" font-weight="bold" aria-hidden="true">強み</text>
                         
                         <!-- 発見 - 左側 -->
                         <g transform="translate(200, 400)">
                             <circle cx="0" cy="0" r="70" fill="#ffffff" stroke="#4a6fa5" stroke-width="3" />
-                            <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a6fa5" font-weight="bold">発見</text>
+                            <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a6fa5" font-weight="bold" aria-hidden="true">発見</text>
                         </g>
                         
                         <!-- 言語化 - 中央 -->
                         <g transform="translate(400, 400)">
                             <circle cx="0" cy="0" r="70" fill="#ffffff" stroke="#4a6fa5" stroke-width="3" />
-                            <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a6fa5" font-weight="bold">言語化</text>
+                            <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a6fa5" font-weight="bold" aria-hidden="true">言語化</text>
                         </g>
                         
                         <!-- 活用 - 右側 -->
                         <g transform="translate(600, 400)">
                             <circle cx="0" cy="0" r="70" fill="#ffffff" stroke="#4a6fa5" stroke-width="3" />
-                            <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a6fa5" font-weight="bold">活用</text>
+                            <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a6fa5" font-weight="bold" aria-hidden="true">活用</text>
                         </g>
                     </svg>
                 </div>
