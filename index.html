@@ -118,6 +118,7 @@
             flex-wrap: wrap;
             align-items: center;
             gap: 2rem;
+            margin: 2rem 0;
         }
         
         .about-text {
@@ -127,6 +128,8 @@
         .about-image {
             flex: 1 1 400px;
             text-align: center;
+            margin: 0;
+            padding: 0;
         }
         
         /* SVG関連のスタイルを追加 */
@@ -135,6 +138,7 @@
             height: auto;
             display: block;
             margin: 0 auto;
+            vertical-align: middle;
         }
         
         .about-image img {
@@ -549,11 +553,18 @@
             .about-content,
             .profile-content {
                 flex-direction: column;
+                gap: 1rem;
             }
             
             .about-image,
             .profile-image {
                 order: -1;
+                margin-bottom: 0;
+            }
+            
+            .about-image svg {
+                margin: 0 auto;
+                max-height: 300px;
             }
             
             .timeline::before {
