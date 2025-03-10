@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- 背景 -->
+  <rect width="800" height="600" fill="#f5f7fa" />
+  
+  <!-- 接続線 - 強みから各要素へ（円の下に配置するため先に描画） -->
+  <!-- 強みから発見へ -->
+  <path d="M345 260 L230 330" fill="none" stroke="#f9a826" stroke-width="4" stroke-linecap="round" />
+  <polygon points="222,340 236,336 230,335" fill="#f9a826" transform="rotate(-35 230 335)" />
+  
+  <!-- 強みから言語化へ -->
+  <path d="M400 290 L400 330" fill="none" stroke="#f9a826" stroke-width="4" stroke-linecap="round" />
+  <polygon points="395,335 405,335 400,330" fill="#f9a826" />
+  
+  <!-- 強みから活用へ -->
+  <path d="M465 260 L570 330" fill="none" stroke="#f9a826" stroke-width="4" stroke-linecap="round" />
+  <polygon points="578,340 564,336 570,335" fill="#f9a826" transform="rotate(35 570 335)" />
+  
+  <!-- プログラム名 -->
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="#4a6fa5" font-weight="bold">才能開花プログラム</text>
+  
+  <!-- 中心円 - 強み（上部に配置） -->
+  <circle cx="400" cy="200" r="90" fill="#4a6fa5" />
+  <text x="400" y="210" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="#ffffff" font-weight="bold">強み</text>
+  
+  <!-- 発見 - 左側 -->
+  <g transform="translate(200, 400)">
+    <circle cx="0" cy="0" r="70" fill="#ffffff" stroke="#4a6fa5" stroke-width="3" />
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a6fa5" font-weight="bold">発見</text>
+  </g>
+  
+  <!-- 言語化 - 中央 -->
+  <g transform="translate(400, 400)">
+    <circle cx="0" cy="0" r="70" fill="#ffffff" stroke="#4a6fa5" stroke-width="3" />
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a6fa5" font-weight="bold">言語化</text>
+  </g>
+  
+  <!-- 活用 - 右側 -->
+  <g transform="translate(600, 400)">
+    <circle cx="0" cy="0" r="70" fill="#ffffff" stroke="#4a6fa5" stroke-width="3" />
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#4a6fa5" font-weight="bold">活用</text>
+  </g>
+</svg>
