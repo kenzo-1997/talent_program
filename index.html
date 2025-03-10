@@ -125,6 +125,14 @@
             flex: 1 1 600px;
         }
         
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+        
         .about-image {
             flex: 1 1 400px;
             text-align: center;
@@ -559,12 +567,21 @@
             .about-image,
             .profile-image {
                 order: -1;
-                margin-bottom: 0;
+                margin-bottom: 1rem;
             }
             
             .about-image svg {
                 margin: 0 auto;
                 max-height: 300px;
+            }
+            
+            .about-text {
+                margin-top: 0;
+                padding-top: 0;
+            }
+            
+            .about-text p:first-child {
+                margin-top: 0;
             }
             
             .timeline::before {
@@ -691,7 +708,7 @@
             <h2>プログラムについて</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>才能開花プログラムは、ストレングスファインダーなどの診断ツールで見つかった「強み」を、実際の生活や仕事で活かすためのサポートプログラムです。</p>
+                    <p style="margin-top: 0;">才能開花プログラムは、ストレングスファインダーなどの診断ツールで見つかった「強み」を、実際の生活や仕事で活かすためのサポートプログラムです。</p>
                     <p>特に日本では、褒められると「そんなことない」と否定・謙遜するのが美徳とされている文化があり、自分の強みを素直に受け入れることが難しい環境でもあります。</p>
                     <p>このプログラムでは、第三者の視点から、あなたの強みを客観的に観察し、言語化します。そして、その強みがどのように日常や仕事で活かせるかを一緒に考えていきます。</p>
                 </div>
