@@ -820,7 +820,8 @@
             </div>
             
             <div class="contact-form">
-                <form name="talent-program-monitor" data-netlify="true">
+                <form name="talent-program-monitor" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="talent-program-monitor" />
                     <div class="form-group">
                         <label for="name">お名前</label>
                         <input type="text" id="name" name="name" placeholder="例: 山田 太郎" required>
@@ -883,26 +884,40 @@
         const form = document.querySelector('form[name="talent-program-monitor"]');
         if (form) {
             form.addEventListener('submit', function(e) {
-                e.preventDefault(); // デフォルトの送信をキャンセル
+                // 標準送信は妨げない (Netlifyのフォーム処理を動作させる)
                 
-                const formData = new FormData(form);
+                // フォーム要素の参照を保持
+                const formElement = this;
                 
-                fetch('/', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(formData).toString()
-                })
-                .then(() => {
-                    // HTMLを直接設定するがクオート処理を明示的に行う
-                    form.innerHTML = '<div style="text-align: center; padding: 2rem;">' +
-                        '<h3 style="color: var(--primary-color); margin-bottom: 1rem;">ご応募ありがとうございます！</h3>' +
-                        '<p style="font-family: var(--font-main); line-height: 1.6;">数日以内にメールにてご連絡させていただきます。</p>' +
-                        '</div>';
-                })
-                .catch((error) => {
-                    alert('送信中にエラーが発生しました。もう一度お試しください。');
-                    console.log(error);
-                });
+                // タイマーを設定して送信完了後に表示を切り替える
+                setTimeout(function() {
+                    // フォームの親要素を取得
+                    const formContainer = document.querySelector('.contact-form');
+                    
+                    // フォームを非表示に
+                    formElement.style.display = 'none';
+                    
+                    // サンクスメッセージ用のdiv要素を作成
+                    const thankYouDiv = document.createElement('div');
+                    thankYouDiv.style.textAlign = 'center';
+                    thankYouDiv.style.padding = '2rem';
+                    
+                    const heading = document.createElement('h3');
+                    heading.style.color = 'var(--primary-color)';
+                    heading.style.marginBottom = '1rem';
+                    heading.textContent = 'ご応募ありがとうございます！';
+                    
+                    const message = document.createElement('p');
+                    message.textContent = '数日以内にメールにてご連絡させていただきます。';
+                    message.style.margin = '0 0 1rem 0';
+                    message.style.fontSize = '1.1rem';
+                    
+                    thankYouDiv.appendChild(heading);
+                    thankYouDiv.appendChild(message);
+                    
+                    // サンクスメッセージを追加
+                    formContainer.appendChild(thankYouDiv);
+                }, 500); // 0.5秒後に実行
             });
         }
     </script>
