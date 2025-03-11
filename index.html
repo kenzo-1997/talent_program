@@ -841,6 +841,7 @@
                         <label for="message">メッセージ (ご質問や参加可能日時など)</label>
                         <textarea id="message" name="message" placeholder="例: 平日夜間や週末であれば参加可能です。強みの活かし方について特に知りたいです。" required></textarea>
                     </div>
+                    <!-- Netlify側で通知設定済み -->
                     <button type="submit" class="button submit-button">今すぐモニターに応募する</button>
                 </form>
             </div>
@@ -882,9 +883,28 @@
         const form = document.querySelector('form[name="talent-program-monitor"]');
         if (form) {
             form.addEventListener('submit', function(e) {
-                // Netlifyのフォーム送信は通常通り行われる
-                // 追加の処理を入れる場合はここに記述
-                // 例: alert('送信完了しました！');
+                e.preventDefault(); // デフォルトの送信をキャンセル
+                
+                const formData = new FormData(form);
+                
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => {
+                    // フォームを非表示にして、サンクスメッセージを表示
+                    form.innerHTML = `
+                        <div style="text-align: center; padding: 2rem;">
+                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">ご応募ありがとうございます！</h3>
+                            <p>数日以内にメールにてご連絡させていただきます。</p>
+                        </div>
+                    `;
+                })
+                .catch((error) => {
+                    alert('送信中にエラーが発生しました。もう一度お試しください。');
+                    console.log(error);
+                });
             });
         }
     </script>
