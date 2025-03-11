@@ -893,27 +893,11 @@
                     body: new URLSearchParams(formData).toString()
                 })
                 .then(() => {
-                    // フォームを非表示にして、サンクスメッセージを表示
-                    // 直接要素を作成してスタイルを適用する方法に変更
-                    form.innerHTML = ''; // フォームをクリア
-                    
-                    const thankYouDiv = document.createElement('div');
-                    thankYouDiv.style.textAlign = 'center';
-                    thankYouDiv.style.padding = '2rem';
-                    
-                    const heading = document.createElement('h3');
-                    heading.style.color = 'var(--primary-color)';
-                    heading.style.marginBottom = '1rem';
-                    heading.textContent = 'ご応募ありがとうございます！';
-                    
-                    const message = document.createElement('p');
-                    message.textContent = '数日以内にメールにてご連絡させていただきます。';
-                    message.style.fontSize = '1.1rem';
-                    message.style.color = '#333';
-                    
-                    thankYouDiv.appendChild(heading);
-                    thankYouDiv.appendChild(message);
-                    form.appendChild(thankYouDiv);
+                    // HTMLを直接設定するがクオート処理を明示的に行う
+                    form.innerHTML = '<div style="text-align: center; padding: 2rem;">' +
+                        '<h3 style="color: var(--primary-color); margin-bottom: 1rem;">ご応募ありがとうございます！</h3>' +
+                        '<p style="font-family: var(--font-main); line-height: 1.6;">数日以内にメールにてご連絡させていただきます。</p>' +
+                        '</div>';
                 })
                 .catch((error) => {
                     alert('送信中にエラーが発生しました。もう一度お試しください。');
