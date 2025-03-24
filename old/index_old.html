@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>才能開花プログラム | 強みを見つけ、言葉にし、活かす</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #8ca9d3;
+            --accent-color: #f9a826;
+            --light-color: #ffffff;
+            --dark-color: #1a1a2e;
+            --gray-color: #f8f9fa;
+            --font-main: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            overflow-x: hidden; /* 横スクロールを防止 */
+            width: 100%;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            padding: 4rem 0;
+            background-color: var(--gray-color);
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-item {
+            flex: 1 1 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* 常に上下配置に変更 */
+        .about {
+            padding: 3rem 0;
+            background-color: var(--light-color);
+            overflow: hidden;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;  /* 常に縦方向の配置 */
+            align-items: center;
+            gap: 2rem;
+            margin: 0;
+        }
+        
+        .about-image {
+            width: 100%;
+            max-width: 500px; /* 画像の最大幅を制限 */
+            margin: 0 auto 2rem;  /* 下部のマージンを追加 */
+            text-align: center;
+        }
+        
+        .about-image img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .text-container {
+            background-color: var(--light-color);
+            padding: 0;
+            margin: 0;
+        }
+        
+        .text-container p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .text-container p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .profile {
+            background-color: var(--gray-color);
+            padding: 4rem 0;
+        }
+        
+        .profile-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .profile-image {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+        
+        .profile-image img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-text {
+            flex: 1 1 400px;
+        }
+        
+        .cta {
+            padding: 4rem 0;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cta h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .cta p {
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.2rem;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        
+        .button:hover {
+            background-color: #e69718;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-large {
+            padding: 1rem 3rem;
+            font-size: 1.3rem;
+        }
+        
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+            text-align: left;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #aaa;
+            font-style: italic;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            width: 100%;
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* プログラムの流れ */
+        .program-flow {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--primary-color);
+            left: 50px;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 1;
+            box-shadow: 0 0 0 5px white;
+            flex-shrink: 0;
+        }
+        
+        .timeline-content {
+            flex-grow: 1;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 特典表示 */
+        .special-offer {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 0 auto 2rem;
+            max-width: 600px;
+            border: 2px solid white;
+        }
+        
+        .special-offer h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .accent {
+            color: #FFD700;
+            font-size: 1.5rem;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* FAQ */
+        .faq {
+            padding: 4rem 0;
+            background-color: var(--gray-color);
+        }
+        
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* ビフォーアフターのスタイル */
+        .before-after {
+            padding: 4rem 0;
+            background-color: var(--gray-color);
+        }
+        
+        .before-after h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .comparison-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .comparison-item {
+            flex: 1 1 450px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .comparison-row {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+        }
+        
+        .comparison-row:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .before-column, .after-column {
+            flex: 1;
+            padding: 1rem;
+            position: relative;
+        }
+        
+        .comparison-label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .comparison-content {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 5px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .before-column .comparison-content {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .after-column .comparison-content {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .arrow-right {
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+            z-index: 1;
+        }
+
+        .section-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .limited-offer {
+            background-color: #ffecb3;
+            color: #e65100;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 5px;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: var(--accent-color);
+            width: 0%;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .profile-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .profile-image {
+                margin-bottom: 1rem;
+            }
+            
+            .about-image {
+                max-width: 90%;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .timeline-item {
+                gap: 1rem;
+            }
+            
+            .comparison-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .arrow-right {
+                right: 50%;
+                top: auto;
+                bottom: -10px;
+                transform: translateX(50%) rotate(90deg);
+            }
+
+            .floating-cta {
+                bottom: 10px;
+                right: 10px;
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>才能開花プログラム</h1>
+            <p>あなたの強みを見つけ、言葉にし、活かす</p>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>あなたは自分の強みを本当に活かせていますか？</h2>
+            <p>ストレングスファインダーを受けたけれど、日常生活や仕事でどう活かせばいいのか分からない。そんな方のための90分の個別セッションです。</p>
+            <a href="#contact" class="button button-large">モニターに応募する</a>
+        </div>
+    </section>
+    
+    <section class="before-after">
+        <div class="container">
+            <h2>こんな変化が期待できます</h2>
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="comparison-row">
+                        <div class="before-column">
+                            <div class="comparison-label">Before</div>
+                            <div class="comparison-content">
+                                <p>「自分には特別な強みがない」と思っている</p>
+                            </div>
+                            <div class="arrow-right"></div>
+                        </div>
+                        <div class="after-column">
+                            <div class="comparison-label">After</div>
+                            <div class="comparison-content">
+                                <p>自分だけの強みを自信を持って説明できる</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="before-column">
+                            <div class="comparison-content">
+                                <p>強みをどう活かせばいいのか分からない</p>
+                            </div>
+                            <div class="arrow-right"></div>
+                        </div>
+                        <div class="after-column">
+                            <div class="comparison-content">
+                                <p>日常生活、仕事、就活や転職など様々な場面で強みを活用できる</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="before-column">
+                            <div class="comparison-content">
+                                <p>「できないこと」に注目して自己否定する</p>
+                            </div>
+                            <div class="arrow-right"></div>
+                        </div>
+                        <div class="after-column">
+                            <div class="comparison-content">
+                                <p>自己肯定感が高まり、前向きに挑戦できる</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="before-column">
+                            <div class="comparison-content">
+                                <p>強みを上手くアピールできず、機会を逃す</p>
+                            </div>
+                            <div class="arrow-right"></div>
+                        </div>
+                        <div class="after-column">
+                            <div class="comparison-content">
+                                <p>自分の強みを効果的に伝え、適した機会を得られる</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <h2>プログラムについて</h2>
+            <div class="about-content">
+                <!-- 画像を上に配置 -->
+                <div class="about-image">
+                    <img src="service-intro.svg" alt="才能開花プログラムの概念図：中心に「強み」があり、そこから「発見」「言語化」「活用」につながっています">
+                </div>
+                <!-- テキストを下に配置 -->
+                <div class="about-text">
+                    <div class="text-container">
+                        <p>才能開花プログラムは、ストレングスファインダーなどの診断ツールで見つかった「強み」を、実際の生活や仕事で活かすためのサポートプログラムです。</p>
+                        <p>特に日本では、褒められると「そんなことない」と否定・謙遜するのが美徳とされている文化があり、自分の強みを素直に受け入れることが難しい環境でもあります。</p>
+                        <p>このプログラムでは、第三者の視点から、あなたの強みを客観的に観察し、言語化します。そして、その強みがどのように日常や仕事で活かせるかを一緒に考えていきます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- プログラムの流れ -->
+    <section class="program-flow">
+        <div class="container">
+            <h2>プログラムの特徴と流れ</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>強みの発見</h3>
+                    <p>ストレングスファインダーの結果を基に、あなたの強みをより具体的に言語化します。「なぜそれが強みなのか」を明確にします。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>強みの言語化</h3>
+                    <p>あなたの人生経験の中で、どのように強みが発揮されてきたのかを掘り下げます。実際のエピソードと結びつけることで、より実感を持てるようになります。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>強みの活用</h3>
+                    <p>発見・言語化した強みを、日常生活や仕事でどのように活かせるか、具体的な方法を一緒に考えます。継続的なフォローアップもサポートします。</p>
+                </div>
+            </div>
+            <div class="timeline" style="margin-top: 3rem;">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>事前準備</h3>
+                        <p>ストレングスファインダー結果や、VIA-IS診断結果をシェア。簡単な事前アンケートにお答えいただきます。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>オンラインセッション（90分）</h3>
+                        <p>あなたの強みの発見・言語化・活用方法について、対話形式で深掘りします。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>フォローアップ</h3>
+                        <p>セッション後1週間程度で、強みの活用状況や新たな気づきについて、任意でフォローアップを行います。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <section class="profile">
+        <div class="container">
+            <h2>プロフィール</h2>
+            <div class="profile-content">
+                <div class="profile-image">
+                    <img src="profile.jpg" alt="けんぞーのプロフィール画像">
+                </div>
+                <div class="profile-text">
+                    <h3>けんぞー</h3>
+                    <p>正直に言うと、私自身は愛嬌と人の長所を見つける才能以外は、ほとんど取り柄がありません。学生時代から「ひとたらしの才能だね」と言われるほど、「あなたのここがすごい」「あなたのこういうところ好き」と素直に伝えるのが得意でした。</p>
+                    <p>周りの優秀な人を頼り続けて生きてきたからこそ、「自分にはできないけど、あの人はすごいな」と思う視点が自然と養われました。この視点こそが、あなたの強みを客観的に見つけ出し、言葉にする力になっています。</p>
+                    <p>全国展開している端末の運用保守を担当し、派遣スタッフや協力会社の方々（30名以上）のマネジメントを経験。「いつも助かります！○○なところがさすがですね」と言い続けることで、最初は「そんなことない」と否定していた方も、次第に「最近は仕事が楽しい」と変化していく姿を何度も目にしてきました。</p>
+                    <p>威圧感のないキャラクターで、初対面の方でも「初めて会った気がしない」と言われることも。この安心感こそが、あなたの強みを引き出すために大切だと考えています。</p>
+                    <p>あなたの強みを見つけ、言葉にし、活かすお手伝いができれば嬉しいです。</p>
+                    <p><a href="https://x.com/kenzo_1997" target="_blank">X（Twitter）: @kenzo_1997</a></p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>よくある質問</h2>
+            <div class="faq-item">
+                <h3>セッションはどのように進みますか？</h3>
+                <p>まずは雑談からスタートし、あなたの経験や強みについて対話を進めていきます。強みが活かされた体験を振り返りながら、具体的な言語化と活用方法を一緒に考えていきます。</p>
+            </div>
+            <div class="faq-item">
+                <h3>ストレングスファインダーを受けていなくても参加できますか？</h3>
+                <p>はい、参加可能です。無料の診断ツール「VIA-IS」を代わりにご利用いただけます。英語サイトで分かりにくい部分もありますので、まずはXのDMでご相談ください。</p>
+            </div>
+            <div class="faq-item">
+                <h3>事前準備は必要ですか？</h3>
+                <p>ストレングスファインダーやVIA-ISの診断結果をご準備いただくのみです。その他特別な準備は必要ありません。</p>
+            </div>
+
+        </div>
+    </section>
+    
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="limited-offer">期間限定！先着3名様のみ</div>
+            <h2>無料モニター募集中</h2>
+            <p>才能開花プログラムでは、あなたの強みを発見・言語化・活用するサポートをします。90分のオンラインセッションで、自分の可能性を再発見してみませんか？</p>
+            
+            <!-- モニター特典 -->
+            <div class="special-offer">
+                <h3>モニター特典</h3>
+                <p class="highlight">先着3名様は<span class="accent">無料</span>でご参加いただけます！</p>
+                <p>さらに、希望者には自由参加形式のフォローアップセッションも実施します。</p>
+            </div>
+            
+            <div class="contact-form">
+                <form name="talent-program-monitor" data-netlify="true">
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" name="name" placeholder="例: 山田 太郎" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" name="email" placeholder="例: yamada@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sf">ストレングスファインダー受検有無</label>
+                        <select id="sf" name="strengths_finder" required>
+                            <option value="">選択してください</option>
+                            <option value="yes">受検済み</option>
+                            <option value="no">未受検</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">メッセージ (ご質問や参加可能日時など)</label>
+                        <textarea id="message" name="message" placeholder="例: 平日夜間や週末であれば参加可能です。強みの活かし方について特に知りたいです。" required></textarea>
+                    </div>
+                    <!-- Netlify側で通知設定済み -->
+                    <button type="submit" class="button submit-button">今すぐモニターに応募する</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <a href="#contact" class="button floating-cta">先着3名様！無料モニターに応募する</a>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 才能開花プログラム by けんぞー</p>
+            <div class="social-links">
+                <a href="https://x.com/kenzo_1997" target="_blank">X（Twitter）</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // スクロール進捗バーの実装
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // フォーム送信後の挙動
+        const form = document.querySelector('form[name="talent-program-monitor"]');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // デフォルトの送信をキャンセル
+                
+                const formData = new FormData(form);
+                
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => {
+                    // フォームを非表示にして、サンクスメッセージを表示
+                    // 直接要素を作成してスタイルを適用する方法に変更
+                    form.innerHTML = ''; // フォームをクリア
+                    
+                    const thankYouDiv = document.createElement('div');
+                    thankYouDiv.style.textAlign = 'center';
+                    thankYouDiv.style.padding = '2rem';
+                    
+                    const heading = document.createElement('h3');
+                    heading.style.color = 'var(--primary-color)';
+                    heading.style.marginBottom = '1rem';
+                    heading.textContent = 'ご応募ありがとうございます！';
+                    
+                    const message = document.createElement('p');
+                    message.textContent = '数日以内にメールにてご連絡させていただきます。';
+                    message.style.fontSize = '1.1rem';
+                    message.style.color = '#333';
+                    
+                    thankYouDiv.appendChild(heading);
+                    thankYouDiv.appendChild(message);
+                    form.appendChild(thankYouDiv);
+                })
+                .catch((error) => {
+                    alert('送信中にエラーが発生しました。もう一度お試しください。');
+                    console.log(error);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
